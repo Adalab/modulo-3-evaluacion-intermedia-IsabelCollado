@@ -1,1 +1,123 @@
 /* Aquí van tus estilos */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .App{
+    padding: 1rem;
+    background-color: antiquewhite;
+
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ddd;
+    
+  }
+  
+    .header__title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .phrase__form{
+        padding: 0.25rem;
+        margin: 0.5rem;
+        border: 1px solid #7cbb00;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all ease 0.25s;
+        }
+
+     .header__search{
+        margin-right: 0.25rem;
+    }
+    .select{
+        margin: 0.25rem;
+    } 
+
+    
+    .contact__list{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+    }
+
+    .list_phrase{
+
+        
+        position: relative;
+        width: 30rem;
+        margin: 0 1rem 1rem 0;
+        padding: 0.3rem;
+        border-radius: 0.5rem;
+        border: 1px solid #ddd;
+        padding-bottom: 0.5rem;
+        font-size: 1.25rem;
+    }
+
+    .character{
+        padding-bottom: 0.5rem;
+        color: #7cbb00;
+        font-size: 1.25rem;
+    }
+
+    .new-phrase__form{
+        margin-top: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .new-phrase_title{
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #ddd;
+        font-size: 1.5rem;
+        font-weight: bold;
+
+    }
+
+     .contact__label{
+      
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+        width: 15rem;
+     }
+
+    .new-phrase__input{
+
+        padding: 0.15rem 0.5rem;
+        border-radius: 5px;
+        border: 1px solid #666;
+        outline: none;
+    }
+
+    .new-phrase__btn{
+        margin-top: 1rem;
+        padding: 0.25rem 1rem;
+        border-radius: 0.5rem;
+        border: none;
+        background-color: #7cbb00;
+        font-weight: bold;
+        color: #fff;
+        &:hover {
+      background-color: #38a853;
+    }
+}

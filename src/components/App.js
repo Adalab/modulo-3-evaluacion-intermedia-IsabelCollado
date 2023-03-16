@@ -31,9 +31,7 @@ function App() {
   const renderPhrase = () => {
     return (
       phrase
-
         //filtrar por palabra
-
         .filter((eachPhrase) => {
           return eachPhrase.quote
             .toLocaleLowerCase()
@@ -87,7 +85,7 @@ function App() {
       {/* header */}
       <header className="header">
         <h1 className="header__title">Frases de Friends</h1>
-        <form>
+        <form className="phrase__form">
           <label htmlFor="searchQuotes">Filtrar por frase </label>
           <input
             className="header__search"
@@ -95,7 +93,7 @@ function App() {
             id="searchQuotes"
             type="search"
             name="search"
-            placeholder="Filtrar por palabras"
+            placeholder="Filtrar por frase"
             onInput={handleFilter}
             value={search}
           />
