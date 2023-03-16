@@ -1,9 +1,10 @@
 import '../styles/App.scss';
-import phrases from '../data/phrases.json';
-import { useState } from 'react';
+//import phrases from '../data/phrases.json';
+import { useEffect, useState } from 'react';
+import objectToExport from '../services/localStorage';
 
 function App() {
-  const [phrase, setPhrase] = useState(phrases);
+  const [phrase, setPhrase] = useState(objectToExport.get('local', []));
   const [newPhrase, setNewPhrase] = useState({
     quote: '',
     character: '',
@@ -12,9 +13,25 @@ function App() {
   const [search, setSearch] = useState('');
   const [selectCharacter, setSelectCharacter] = useState('Todos');
 
+  useEffect(() => {
+    // para recuperar los datos del API.
+    if (objectToExport.notIncludes('local')) {
+      fetch(
+        'https://beta.adalab.es/curso-intensivo-fullstack-recursos/apis/quotes-friends-tv-v1/quotes.json'
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setPhrase(data);
+
+          objectToExport.set('local', data);
+        });
+    }
+  }, []);
+
   const renderPhrase = () => {
     return (
       phrase
+
         //filtrar por palabra
 
         .filter((eachPhrase) => {
@@ -75,6 +92,7 @@ function App() {
           <input
             className="header__search"
             autoComplete="off"
+            id="searchQuotes"
             type="search"
             name="search"
             placeholder="Filtrar por palabras"
@@ -82,11 +100,11 @@ function App() {
             value={search}
           />
 
-          <label htmlFor="filters-personaje">Filtrar por personaje</label>
+          <label htmlFor="filters-character">Filtrar por personaje</label>
           <select
             className="select"
-            name=""
-            id=""
+            name="filter character"
+            id="filters-character"
             onChange={handleSelectCharacter}
             value={selectCharacter}
           >
@@ -107,17 +125,21 @@ function App() {
       {/* new phrase */}
       <form className="new-phrase__form">
         <h2 className="new-phrase_title">Añade una nueva frase</h2>
-        <label className="contact__label">Frase</label>
+        <label htmlFor="quote" className="contact__label">
+          Frase
+        </label>
         <input
           className="new-phrase__input"
           type="text"
           name="quote"
           id="quote"
-          placeholdewPhraseer="frase"
+          placeholder="frase"
           onInput={handleNewPhrase}
           value={newPhrase.quote}
         />
-        <label className="contact__label">Personaje</label>
+        <label htmlFor="character" className="contact__label">
+          Personaje
+        </label>
         <input
           className="new-phrase__input"
           type="text"
